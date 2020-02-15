@@ -7,5 +7,9 @@ public class Main {
 
         Player player = new Player();
 
+        game.makeEnemies();
+
+        game.makeEnemiesMove();
+
     }
 }
