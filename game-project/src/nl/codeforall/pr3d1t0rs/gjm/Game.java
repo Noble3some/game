@@ -23,7 +23,7 @@ public class Game {
     }
 
     public void makeEnemiesMove() {
-        for(int i = 0; i < 10; i++) {
+        for(int i = 0; i < 50; i++) {
             for(int j = 0; j < enemies.length; j++) {
                 enemies[j].moveEnemy();
             }
