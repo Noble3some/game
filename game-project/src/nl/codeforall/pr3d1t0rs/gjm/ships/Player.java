@@ -11,8 +11,7 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 public class Player implements KeyboardHandler {
 
     private Rectangle rectangle;
-    private int middleOfShipX;
-    private int heightofShipY;
+
 
     public Player() {
         rectangle = new Rectangle(150,650, 20, 20);
@@ -21,15 +20,6 @@ public class Player implements KeyboardHandler {
         initKeyboard();
     }
 
-    public int getHeightofShipY() {
-        heightofShipY = rectangle.getY();
-        return heightofShipY;
-    }
-
-    public int getMiddleOfShipX() {
-        middleOfShipX = rectangle.getX();
-        return middleOfShipX;
-    }
 
     public void moveRight() {
         if(rectangle.getX() > 280) {
@@ -48,8 +38,8 @@ public class Player implements KeyboardHandler {
     }
 
     public void shoot() {
-        Bullet bullet = new Bullet(middleOfShipX, heightofShipY, 10, 10);
-        bullet.draw();
+        Bullet bullet = new Bullet(rectangle.getX(), rectangle.getY(), 10, 10);
+        bullet.fill();
         bullet.move();
     }
 
