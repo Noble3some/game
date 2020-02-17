@@ -1,8 +1,9 @@
 package nl.codeforall.pr3d1t0rs.gjm;
 
+import nl.codeforall.pr3d1t0rs.gjm.ships.Enemy;
+import nl.codeforall.pr3d1t0rs.gjm.ships.EnemyFactory;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
-import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 
 public class Game {
 

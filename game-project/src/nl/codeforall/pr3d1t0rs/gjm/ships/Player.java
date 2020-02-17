@@ -1,5 +1,6 @@
-package nl.codeforall.pr3d1t0rs.gjm;
+package nl.codeforall.pr3d1t0rs.gjm.ships;
 
+import nl.codeforall.pr3d1t0rs.gjm.Bullet;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
@@ -10,12 +11,24 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 public class Player implements KeyboardHandler {
 
     private Rectangle rectangle;
+    private int middleOfShipX;
+    private int heightofShipY;
 
     public Player() {
         rectangle = new Rectangle(150,650, 20, 20);
         rectangle.setColor(Color.WHITE);
         rectangle.fill();
         initKeyboard();
+    }
+
+    public int getHeightofShipY() {
+        heightofShipY = rectangle.getY();
+        return heightofShipY;
+    }
+
+    public int getMiddleOfShipX() {
+        middleOfShipX = rectangle.getX();
+        return middleOfShipX;
     }
 
     public void moveRight() {
@@ -34,6 +47,12 @@ public class Player implements KeyboardHandler {
         rectangle.fill();
     }
 
+    public void shoot() {
+        Bullet bullet = new Bullet(middleOfShipX, heightofShipY, 10, 10);
+        bullet.draw();
+        bullet.move();
+    }
+
     public void initKeyboard() {
 
         Keyboard keyboard = new Keyboard(this);
@@ -48,6 +67,11 @@ public class Player implements KeyboardHandler {
         pressLeft.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         keyboard.addEventListener(pressLeft);
 
+        KeyboardEvent pressSpace = new KeyboardEvent();
+        pressSpace.setKey(KeyboardEvent.KEY_SPACE);
+        pressSpace.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        keyboard.addEventListener(pressSpace);
+
     }
 
     @Override
@@ -60,11 +84,8 @@ public class Player implements KeyboardHandler {
             case KeyboardEvent.KEY_LEFT:
                 moveLeft();
                 break;
-            case KeyboardEvent.KEY_UP:
-                //insert moveUp method here
-                break;
-            case KeyboardEvent.KEY_DOWN:
-                //insert moveDown method here
+            case KeyboardEvent.KEY_SPACE:
+                shoot();
                 break;
         }
     }

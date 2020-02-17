@@ -1,4 +1,4 @@
-package nl.codeforall.pr3d1t0rs.gjm;
+package nl.codeforall.pr3d1t0rs.gjm.ships;
 
 public class EnemyFactory {
 

@@ -1,4 +1,4 @@
-package nl.codeforall.pr3d1t0rs.gjm;
+package nl.codeforall.pr3d1t0rs.gjm.ships;
 
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Ellipse;
