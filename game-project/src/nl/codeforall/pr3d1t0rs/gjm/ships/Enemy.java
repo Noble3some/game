@@ -14,7 +14,6 @@ public class Enemy{
         System.out.println(size = randomSize);
         ellipse = new Ellipse(((int)(Math.random()*280)),((int)(Math.random()*350)), randomSize, randomSize);
         this.setEnemyColor();
-        ellipse.draw();
         ellipse.fill();
     }
 
@@ -35,17 +34,17 @@ public class Enemy{
             return;
         }
         if(size < 15) {
-            ellipse.translate(0, 16);
+            ellipse.translate(0, 5);
             this.setEnemyColor();
             ellipse.fill();
         }
         if(size >= 15 && size < 20) {
-            ellipse.translate(0, 8);
+            ellipse.translate(0, 3);
             this.setEnemyColor();
             ellipse.fill();
         }
         if(size >= 20) {
-            ellipse.translate(0, 5);
+            ellipse.translate(0, 2);
             this.setEnemyColor();
             ellipse.fill();
         }

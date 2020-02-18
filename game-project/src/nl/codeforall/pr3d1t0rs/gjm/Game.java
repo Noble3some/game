@@ -17,10 +17,11 @@ public class Game {
     private boolean gameOver;
     private Enemy[] enemies;
     private Player player;
-    private KeyboardHandler keyboardHandler;
+    private Handler handler;
 
     public Game() {
     }
+
 
     public void drawPlayingField() {
         playingField = new Rectangle(10,10, 300, 700);
@@ -32,32 +33,30 @@ public class Game {
         drawPlayingField();
         enemies = EnemyFactory.generateEnemies();
         player = new Player();
-        Handler handler = new Handler(player);
+        handler = new Handler(player);
         handler.init();
         moveEverything();
     }
 
+    public void moveBullets() {
 
+    }
 
 
     public void moveEverything() {
-//        for(int i = 0; i < 50; i++) {
-//            for(int j = 0; j < enemies.length; j++) {
-//                enemies[j].moveEnemy();
-//            }
-//        }
 
         while (true) {
             // move player
             player.move();
 
             // move enemies
-
             for (Enemy enemy : enemies) {
                 enemy.move();
             }
 
             // move bullets
+
+            handler.getBullet().move();
 
             // check collisions
 

@@ -9,6 +9,7 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 public class Handler implements KeyboardHandler {
 
     private Player player;
+    private Bullet bullet;
 
     public Handler(Player player) {
         this.player = player;
@@ -55,7 +56,7 @@ public class Handler implements KeyboardHandler {
                 player.setDirection(Direction.LEFT);
                 break;
             case KeyboardEvent.KEY_SPACE:
-                player.shoot();
+                bullet.spacePushed();
                 break;
         }
     }

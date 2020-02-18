@@ -19,9 +19,8 @@ public class Player {
         rectangle = new Rectangle(150,650, 20, 20);
         rectangle.setColor(Color.WHITE);
         rectangle.fill();
-        bullet = new Bullet(rectangle.getX(),rectangle.getY(),10, 10);
-
     }
+
 
     public void move() {
         if (direction == null) {
@@ -52,11 +51,12 @@ public class Player {
     }
 
     public void shoot() {
-        bullet.move();
+        bullet = new Bullet(rectangle.getX(), rectangle.getY(), 5, 5);
     }
 
-
-
+    public Rectangle getRectangle() {
+        return rectangle;
+    }
 
     public void setDirection(Direction direction) {
         this.direction = direction;

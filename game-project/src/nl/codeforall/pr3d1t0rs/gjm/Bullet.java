@@ -5,6 +5,7 @@ import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
 public class Bullet{
 
+    private boolean spacePushed;
     private Rectangle rectangle;
 
     public Bullet(int startingX, int startingY, int bulletWidth, int bulletHeight) {
@@ -14,17 +15,20 @@ public class Bullet{
     }
 
     public void move() {
-        rectangle.translate(0, -50);
+        if (spacePushed == false) {
+            return;
+        }
+        goUp();
+    }
+
+    public void goUp() {
+        rectangle.translate(0, -10);
         rectangle.setColor(Color.WHITE);
         rectangle.fill();
         System.out.println("Pew pew.");
-        try {
-            Thread.sleep(100);
-        } catch (InterruptedException e) {
-            System.out.println("You fucked up.");
-        }
     }
 
-
-
+    public void spacePushed() {
+        spacePushed = true;
+    }
 }
