@@ -1,6 +1,7 @@
 package nl.codeforall.pr3d1t0rs.gjm.ships;
 
 import nl.codeforall.pr3d1t0rs.gjm.Bullet;
+import nl.codeforall.pr3d1t0rs.gjm.Direction;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
@@ -10,35 +11,47 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 
 public class Player implements KeyboardHandler {
 
+    private Direction direction;
     private Rectangle rectangle;
-
+    private Bullet bullet;
 
     public Player() {
         rectangle = new Rectangle(150,650, 20, 20);
         rectangle.setColor(Color.WHITE);
         rectangle.fill();
+        bullet = new Bullet(rectangle.getX(),rectangle.getY(),10, 10);
         initKeyboard();
     }
 
+    public void move() {
+        if (direction == null) {
+            return;
+        }
 
-    public void moveRight() {
+        if (direction == Direction.RIGHT) {
+            moveRight();
+        } else {
+            moveLeft();
+        }
+    }
+
+    private void moveRight() {
         if(rectangle.getX() > 280) {
             return;
         }
-        rectangle.translate(10, 0);
+        rectangle.translate(5, 0);
         rectangle.fill();
     }
 
-    public void moveLeft() {
+    private void moveLeft() {
         if(rectangle.getX() < 20) {
             return;
         }
-        rectangle.translate(-10, 0);
+        rectangle.translate(-5, 0);
         rectangle.fill();
     }
 
     public void shoot() {
-        Bullet bullet = new Bullet(rectangle.getX(), rectangle.getY(), 10, 10);
         bullet.fill();
         bullet.move();
     }
@@ -62,6 +75,15 @@ public class Player implements KeyboardHandler {
         pressSpace.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         keyboard.addEventListener(pressSpace);
 
+        KeyboardEvent releaseLeft = new KeyboardEvent();
+        releaseLeft.setKey(KeyboardEvent.KEY_LEFT);
+        releaseLeft.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
+        keyboard.addEventListener(releaseLeft);
+
+        KeyboardEvent releaseRight = new KeyboardEvent();
+        releaseRight.setKey(KeyboardEvent.KEY_RIGHT);
+        releaseRight.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
+        keyboard.addEventListener(releaseRight);
     }
 
     @Override
@@ -69,10 +91,10 @@ public class Player implements KeyboardHandler {
     public void keyPressed(KeyboardEvent keyboardEvent) {
         switch(keyboardEvent.getKey()) {
             case KeyboardEvent.KEY_RIGHT:
-                moveRight();
+                setDirection(Direction.RIGHT);
                 break;
             case KeyboardEvent.KEY_LEFT:
-                moveLeft();
+                setDirection(Direction.LEFT);
                 break;
             case KeyboardEvent.KEY_SPACE:
                 shoot();
@@ -81,6 +103,12 @@ public class Player implements KeyboardHandler {
     }
 
     @Override
-    public void keyReleased(KeyboardEvent keyboardEvent) {}
+    public void keyReleased(KeyboardEvent keyboardEvent) {
+        setDirection(null);
+    }
 
+
+    public void setDirection(Direction direction) {
+        this.direction = direction;
+    }
 }

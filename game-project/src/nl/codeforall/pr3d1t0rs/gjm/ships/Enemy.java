@@ -28,7 +28,7 @@ public class Enemy extends Ellipse{
         }
     }
 
-    public void moveEnemy() {
+    public void move() {
         if(this.getY() >= 600) {
             return;
         }
@@ -46,11 +46,6 @@ public class Enemy extends Ellipse{
             translate(0, 5);
             setColor(Color.RED);
             fill();
-        }
-        try {
-            Thread.sleep(100);
-        } catch (InterruptedException e) {
-            System.out.println("Fucked up.");
         }
     }
 

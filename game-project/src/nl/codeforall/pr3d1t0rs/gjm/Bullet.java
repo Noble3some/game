@@ -14,7 +14,7 @@ public class Bullet extends Rectangle {
     }
 
     public void move() {
-        rectangle.translate(0, -20);
+        rectangle.translate(0, -50);
         rectangle.setColor(Color.WHITE);
         rectangle.fill();
         System.out.println("Pew pew.");
