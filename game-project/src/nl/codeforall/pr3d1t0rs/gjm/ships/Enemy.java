@@ -3,49 +3,51 @@ package nl.codeforall.pr3d1t0rs.gjm.ships;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Ellipse;
 
-public class Enemy extends Ellipse{
+public class Enemy{
 
     private Ellipse ellipse;
     private int size;
 
 
-    public Enemy(int randomSize) {
-        super(((int)(Math.random()*280)), ((int)(Math.random()*350)), randomSize, randomSize);
-        setEnemyColor();
-        fill();
-        size = randomSize;
+    public Enemy() {
+        int randomSize = (int)((Math.random()*30 - 15) + 15);
+        System.out.println(size = randomSize);
+        ellipse = new Ellipse(((int)(Math.random()*280)),((int)(Math.random()*350)), randomSize, randomSize);
+        this.setEnemyColor();
+        ellipse.draw();
+        ellipse.fill();
     }
 
     public void setEnemyColor() {
         if(size < 15) {
-            setColor(Color.ORANGE);
+            ellipse.setColor(Color.ORANGE);
         }
         if(size >=15 && size < 20) {
-            setColor(Color.MAGENTA);
+            ellipse.setColor(Color.MAGENTA);
         }
         if(size >= 20) {
-            setColor(Color.RED);
+            ellipse.setColor(Color.RED);
         }
     }
 
     public void move() {
-        if(this.getY() >= 600) {
+        if(ellipse.getY() >= 600) {
             return;
         }
         if(size < 15) {
-            translate(0, 16);
-            setColor(Color.ORANGE);
-            fill();
+            ellipse.translate(0, 16);
+            this.setEnemyColor();
+            ellipse.fill();
         }
         if(size >= 15 && size < 20) {
-            translate(0, 8);
-            setColor(Color.MAGENTA);
-            fill();
+            ellipse.translate(0, 8);
+            this.setEnemyColor();
+            ellipse.fill();
         }
         if(size >= 20) {
-            translate(0, 5);
-            setColor(Color.RED);
-            fill();
+            ellipse.translate(0, 5);
+            this.setEnemyColor();
+            ellipse.fill();
         }
     }
 

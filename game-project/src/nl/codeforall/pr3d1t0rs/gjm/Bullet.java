@@ -3,7 +3,7 @@ package nl.codeforall.pr3d1t0rs.gjm;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
-public class Bullet extends Rectangle {
+public class Bullet{
 
     private Rectangle rectangle;
 

@@ -52,7 +52,6 @@ public class Player {
     }
 
     public void shoot() {
-        bullet.fill();
         bullet.move();
     }
 

@@ -10,6 +10,39 @@ public class Handler implements KeyboardHandler {
 
     private Player player;
 
+    public Handler(Player player) {
+        this.player = player;
+    }
+
+    public void init() {
+
+        Keyboard keyboard = new Keyboard(this);
+
+        KeyboardEvent pressRight = new KeyboardEvent();
+        pressRight.setKey(KeyboardEvent.KEY_RIGHT);
+        pressRight.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        keyboard.addEventListener(pressRight);
+
+        KeyboardEvent pressLeft = new KeyboardEvent();
+        pressLeft.setKey(KeyboardEvent.KEY_LEFT);
+        pressLeft.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        keyboard.addEventListener(pressLeft);
+
+        KeyboardEvent pressSpace = new KeyboardEvent();
+        pressSpace.setKey(KeyboardEvent.KEY_SPACE);
+        pressSpace.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        keyboard.addEventListener(pressSpace);
+
+        KeyboardEvent releaseLeft = new KeyboardEvent();
+        releaseLeft.setKey(KeyboardEvent.KEY_LEFT);
+        releaseLeft.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
+        keyboard.addEventListener(releaseLeft);
+
+        KeyboardEvent releaseRight = new KeyboardEvent();
+        releaseRight.setKey(KeyboardEvent.KEY_RIGHT);
+        releaseRight.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
+        keyboard.addEventListener(releaseRight);
+    }
 
     @Override
 
