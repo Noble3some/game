@@ -34,17 +34,17 @@ public class Enemy{
             return;
         }
         if(size < 15) {
-            ellipse.translate(0, 5);
-            this.setEnemyColor();
-            ellipse.fill();
-        }
-        if(size >= 15 && size < 20) {
             ellipse.translate(0, 3);
             this.setEnemyColor();
             ellipse.fill();
         }
+        if(size >= 15 && size < 20) {
+            ellipse.translate(0, 1);
+            this.setEnemyColor();
+            ellipse.fill();
+        }
         if(size >= 20) {
-            ellipse.translate(0, 2);
+            ellipse.translate(0, 1);
             this.setEnemyColor();
             ellipse.fill();
         }

@@ -17,9 +17,11 @@ public class Game {
     private boolean gameOver;
     private Enemy[] enemies;
     private Player player;
-    private Bullet bullet;
+    private BulletList bulletList;
+
 
     public Game() {
+
     }
 
 
@@ -33,19 +35,19 @@ public class Game {
         drawPlayingField();
         enemies = EnemyFactory.generateEnemies();
         player = new Player();
-        bullet = new Bullet(player.getRectangle().getX(),player.getRectangle().getY(), 10, 10);
-        Handler handler = new Handler(player, bullet);
+        bulletList = new BulletList(0,0, 0,0);
+        Handler handler = new Handler(player, bulletList);
         handler.init();
         moveEverything();
     }
 
     public void moveBullets() {
-        if(!bullet.isSpacePushed()) {
-            return;
-        }
-        bullet.getRectangle().translate(player.getRectangle().getX(), 0);
-        bullet.move();
+
+        bulletList.getHead().getNext().goUp();
+        bulletList.getLastUsed().goUp();
+        bulletList.getLastUsed().getNext().goUp();
     }
+
 
 
     public void moveEverything() {
@@ -60,8 +62,10 @@ public class Game {
             }
 
             // move bullets
+            if(bulletList.getLength() > 0) {
+                moveBullets();
 
-            moveBullets();
+            }
 
             // check collisions
 

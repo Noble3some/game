@@ -9,11 +9,11 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 public class Handler implements KeyboardHandler {
 
     private Player player;
-    private Bullet bullet;
+    private BulletList bulletList;
 
-    public Handler(Player player, Bullet bullet) {
+    public Handler(Player player, BulletList bulletList) {
         this.player = player;
-        this.bullet = bullet;
+        this.bulletList = bulletList;
     }
 
     public void init() {
@@ -57,7 +57,8 @@ public class Handler implements KeyboardHandler {
                 player.setDirection(Direction.LEFT);
                 break;
             case KeyboardEvent.KEY_SPACE:
-                bullet.spacePushed();
+                System.out.println("Spacebar has been pushed.");
+                bulletList.add(player.getRectangle().getX(), player.getRectangle().getY(), 2, 4);
                 break;
         }
     }
