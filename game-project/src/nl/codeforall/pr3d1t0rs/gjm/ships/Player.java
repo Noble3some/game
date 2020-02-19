@@ -50,7 +50,7 @@ public class Player {
     }
 
     private void moveRight() {
-        if(spaceship.getX() > 628) {
+        if(spaceship.getX() > 670) {
             return;
         }
         spaceship.translate(5, 0);

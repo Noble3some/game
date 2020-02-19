@@ -1,7 +1,6 @@
 package nl.codeforall.pr3d1t0rs.gjm.ships;
 
-import org.academiadecodigo.simplegraphics.graphics.Color;
-import org.academiadecodigo.simplegraphics.graphics.Ellipse;
+
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Enemy{
@@ -12,8 +11,27 @@ public class Enemy{
     private int size;
 
 
+
     public Enemy() {
-        enemyship = new Picture(360, 0, "enemies.png");
+        EnemyType type = EnemyType.selectEnemyType();
+        int locationX = (int)(Math.random()*(20-680)+680);
+        int locationY = (int) (Math.random()* (10-200) + 200);
+        System.out.println(locationX);
+        System.out.println(type);
+        switch (type) {
+            case ONE:
+                enemyship = new Picture(locationX, locationY, "enemies.png");
+                break;
+            case TWO:
+                enemyship = new Picture(locationX, locationY, "enemies2.png");
+                break;
+            case THREE:
+                enemyship = new Picture( locationX, locationY, "enemies3.png");
+                break;
+            default:
+                enemyship = new Picture(locationX, 0, "enemies.png");
+        }
+
         enemyship.draw();
 
     }
