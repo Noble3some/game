@@ -9,13 +9,17 @@ import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Game {
 
     static int fieldWidth;
-    private Rectangle playingField;
+    //private Rectangle playingField; becoming a picture
+
+    private Picture playingField;
     private boolean gameOver;
     private Enemy[] enemies;
+    private Bullet[] bullets;
     private Player player;
     private KeyboardHandler keyboardHandler;
 
@@ -23,14 +27,16 @@ public class Game {
     }
 
     public void drawPlayingField() {
-        playingField = new Rectangle(10,10, 300, 700);
-        playingField.setColor(Color.GRAY);
-        playingField.fill();
+        playingField = new Picture(10,10, "background.jpg");
+       //playingField.setColor(Color.GRAY);
+        //playingField.fill();
+        playingField.draw();
     }
 
     public void init() {
         drawPlayingField();
         enemies = EnemyFactory.generateEnemies();
+
         player = new Player();
         Handler handler = new Handler(player);
         handler.init();
@@ -58,6 +64,7 @@ public class Game {
             }
 
             // move bullets
+
 
             // check collisions
 
