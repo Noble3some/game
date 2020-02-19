@@ -13,7 +13,6 @@ public class Player {
 
     private Direction direction;
     private Rectangle rectangle;
-    private Bullet bullet;
 
     public Player() {
         rectangle = new Rectangle(150,650, 20, 20);
@@ -48,10 +47,6 @@ public class Player {
         }
         rectangle.translate(-5, 0);
         rectangle.fill();
-    }
-
-    public void shoot() {
-        bullet = new Bullet(rectangle.getX(), rectangle.getY(), 5, 5);
     }
 
     public Rectangle getRectangle() {

@@ -11,8 +11,9 @@ public class Handler implements KeyboardHandler {
     private Player player;
     private Bullet bullet;
 
-    public Handler(Player player) {
+    public Handler(Player player, Bullet bullet) {
         this.player = player;
+        this.bullet = bullet;
     }
 
     public void init() {

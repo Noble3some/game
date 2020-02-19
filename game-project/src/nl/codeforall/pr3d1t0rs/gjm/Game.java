@@ -17,7 +17,7 @@ public class Game {
     private boolean gameOver;
     private Enemy[] enemies;
     private Player player;
-    private Handler handler;
+    private Bullet bullet;
 
     public Game() {
     }
@@ -33,13 +33,18 @@ public class Game {
         drawPlayingField();
         enemies = EnemyFactory.generateEnemies();
         player = new Player();
-        handler = new Handler(player);
+        bullet = new Bullet(player.getRectangle().getX(),player.getRectangle().getY(), 10, 10);
+        Handler handler = new Handler(player, bullet);
         handler.init();
         moveEverything();
     }
 
     public void moveBullets() {
-
+        if(!bullet.isSpacePushed()) {
+            return;
+        }
+        bullet.getRectangle().translate(player.getRectangle().getX(), 0);
+        bullet.move();
     }
 
 
@@ -56,7 +61,7 @@ public class Game {
 
             // move bullets
 
-            handler.getBullet().move();
+            moveBullets();
 
             // check collisions
 

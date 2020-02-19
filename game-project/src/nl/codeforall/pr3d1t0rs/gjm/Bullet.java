@@ -15,8 +15,8 @@ public class Bullet{
     }
 
     public void move() {
-        if (spacePushed == false) {
-            return;
+        if (!spacePushed) {
+            rectangle.delete();
         }
         goUp();
     }
@@ -25,10 +25,17 @@ public class Bullet{
         rectangle.translate(0, -10);
         rectangle.setColor(Color.WHITE);
         rectangle.fill();
-        System.out.println("Pew pew.");
     }
 
     public void spacePushed() {
         spacePushed = true;
+    }
+
+    public boolean isSpacePushed() {
+        return spacePushed;
+    }
+
+    public Rectangle getRectangle() {
+        return rectangle;
     }
 }
