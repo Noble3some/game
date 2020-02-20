@@ -59,9 +59,9 @@ public class Game {
 
             // move enemies
 
-            //for (Enemy enemy : enemies) {
-            //    enemy.move();
-           // }
+            for (Enemy enemy : enemies) {
+                  enemy.move();
+            }
 
             // move bullets
 
