@@ -9,13 +9,17 @@ import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Game {
 
     static int fieldWidth;
-    private Rectangle playingField;
+    //private Rectangle playingField; becoming a picture
+
+    private Picture playingField;
     private boolean gameOver;
     private Enemy[] enemies;
+    private Bullet[] bullets;
     private Player player;
     private BulletList bulletList;
     //TODO Get rid of BulletList class; only have the Bullet class; the game stores each bullet in the container (probably linked list)
@@ -27,14 +31,16 @@ public class Game {
 
 
     public void drawPlayingField() {
-        playingField = new Rectangle(10,10, 300, 700);
-        playingField.setColor(Color.GRAY);
-        playingField.fill();
+        playingField = new Picture(10,10, "background.jpg");
+       //playingField.setColor(Color.GRAY);
+        //playingField.fill();
+        playingField.draw();
     }
 
     public void init() {
         drawPlayingField();
         enemies = EnemyFactory.generateEnemies();
+
         player = new Player();
         bulletList = new BulletList(0,0, 0,0);
         Handler handler = new Handler(player, bulletList);
@@ -63,7 +69,7 @@ public class Game {
 
             // move enemies
             for (Enemy enemy : enemies) {
-                enemy.move();
+                  enemy.move();
             }
 
             // move bullets
@@ -71,6 +77,7 @@ public class Game {
                 moveBullets();
 
             }
+
 
             // check collisions
 

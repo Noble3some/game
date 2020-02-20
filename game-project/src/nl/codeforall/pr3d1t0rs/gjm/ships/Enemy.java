@@ -1,53 +1,46 @@
 package nl.codeforall.pr3d1t0rs.gjm.ships;
 
-import org.academiadecodigo.simplegraphics.graphics.Color;
-import org.academiadecodigo.simplegraphics.graphics.Ellipse;
 
-public class Enemy{
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
-    private Ellipse ellipse;
+public class Enemy {
+
+    //private Ellipse ellipse;
+
+    private Picture enemyship;
     private int size;
 
 
     public Enemy() {
-        int randomSize = (int)((Math.random()*30 - 15) + 15);
-        System.out.println(size = randomSize);
-        ellipse = new Ellipse(((int)(Math.random()*280)),((int)(Math.random()*350)), randomSize, randomSize);
-        this.setEnemyColor();
-        ellipse.fill();
+        EnemyType type = EnemyType.selectEnemyType();
+        int locationX = (int) (Math.random() * (20 - 680) + 680);
+        int locationY = (int) (Math.random() * (10 - 200) + 200);
+        switch (type) {
+            case ONE:
+                enemyship = new Picture(locationX, locationY, "enemies.png");
+                break;
+            case TWO:
+                enemyship = new Picture(locationX, locationY, "enemies2.png");
+                break;
+            case THREE:
+                enemyship = new Picture(locationX, locationY, "enemies3.png");
+                break;
+            default:
+                enemyship = new Picture(locationX, 0, "enemies.png");
+        }
+
+        enemyship.draw();
+
     }
 
-    public void setEnemyColor() {
-        if(size < 15) {
-            ellipse.setColor(Color.ORANGE);
-        }
-        if(size >=15 && size < 20) {
-            ellipse.setColor(Color.MAGENTA);
-        }
-        if(size >= 20) {
-            ellipse.setColor(Color.RED);
-        }
-    }
 
     public void move() {
-        if(ellipse.getY() >= 600) {
-            return;
+       if (enemyship.getY() <= 700) {
+            enemyship.translate(0, 5);
         }
-        if(size < 15) {
-            ellipse.translate(0, 3);
-            this.setEnemyColor();
-            ellipse.fill();
-        }
-        if(size >= 15 && size < 20) {
-            ellipse.translate(0, 1);
-            this.setEnemyColor();
-            ellipse.fill();
-        }
-        if(size >= 20) {
-            ellipse.translate(0, 1);
-            this.setEnemyColor();
-            ellipse.fill();
-        }
-    }
 
+
+    }
 }
+
+
