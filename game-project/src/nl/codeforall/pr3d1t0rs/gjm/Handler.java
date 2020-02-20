@@ -57,7 +57,6 @@ public class Handler implements KeyboardHandler {
                 player.setDirection(Direction.LEFT);
                 break;
             case KeyboardEvent.KEY_SPACE:
-                System.out.println("Spacebar has been pushed.");
                 bulletList.add(player.getRectangle().getX(), player.getRectangle().getY(), 2, 4);
                 break;
         }

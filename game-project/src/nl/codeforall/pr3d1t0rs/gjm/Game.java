@@ -18,6 +18,7 @@ public class Game {
     private Enemy[] enemies;
     private Player player;
     private BulletList bulletList;
+    //TODO Get rid of BulletList class; only have the Bullet class; the game stores each bullet in the container (probably linked list)
 
 
     public Game() {
@@ -42,6 +43,10 @@ public class Game {
     }
 
     public void moveBullets() {
+      //TODO iterate through the list and move each bullet
+        for(Bullet b : buletList){
+            bullet.goUp();
+        }
 
         bulletList.getHead().getNext().goUp();
         bulletList.getLastUsed().goUp();
