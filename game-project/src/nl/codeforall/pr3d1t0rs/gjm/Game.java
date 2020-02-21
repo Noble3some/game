@@ -23,7 +23,6 @@ public class Game {
     private Enemy[] enemies;
     private Player player;
     private LinkedList<Bullet> bullets;
-    //TODO Get rid of BulletList class; only have the Bullet class; the game stores each bullet in the container (probably linked list)
 
 
     public Game() {
@@ -33,8 +32,6 @@ public class Game {
 
     public void drawPlayingField() {
         playingField = new Picture(10,10, "background.jpg");
-       //playingField.setColor(Color.GRAY);
-        //playingField.fill();
         playingField.draw();
     }
 
@@ -70,6 +67,7 @@ public class Game {
                 }
             }
 
+            // delete bullet from linked list if it has gotten boolean state "has gone off screen"
             // move bullets
             if(bullets.size() > 0) {
                 moveBullets();
