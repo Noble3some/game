@@ -6,14 +6,16 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 
+import java.util.LinkedList;
+
 public class Handler implements KeyboardHandler {
 
     private Player player;
-    private BulletList bulletList;
+    private LinkedList<Bullet> bullets;
 
-    public Handler(Player player, BulletList bulletList) {
+    public Handler(Player player, LinkedList bullets) {
         this.player = player;
-        this.bulletList = bulletList;
+        this.bullets = bullets;
     }
 
     public void init() {
@@ -57,7 +59,7 @@ public class Handler implements KeyboardHandler {
                 player.setDirection(Direction.LEFT);
                 break;
             case KeyboardEvent.KEY_SPACE:
-                bulletList.add(player.getSpaceship().getX(), player.getSpaceship().getY(), 2, 4);
+                bullets.add(new Bullet(player.getSpaceship().getX(), player.getSpaceship().getY(), 3, 5));
                 break;
         }
     }

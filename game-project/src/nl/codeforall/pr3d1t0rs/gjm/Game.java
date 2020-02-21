@@ -11,6 +11,8 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
+import java.util.LinkedList;
+
 public class Game {
 
     static int fieldWidth;
@@ -20,7 +22,7 @@ public class Game {
     private boolean gameOver;
     private Enemy[] enemies;
     private Player player;
-    private BulletList bulletList;
+    private LinkedList<Bullet> bullets;
     //TODO Get rid of BulletList class; only have the Bullet class; the game stores each bullet in the container (probably linked list)
 
 
@@ -41,21 +43,16 @@ public class Game {
         enemies = EnemyFactory.generateEnemies();
 
         player = new Player();
-        bulletList = new BulletList(0,0, 0,0);
-        Handler handler = new Handler(player, bulletList);
+        bullets = new LinkedList<Bullet>();
+        Handler handler = new Handler(player, bullets);
         handler.init();
         moveEverything();
     }
 
     public void moveBullets() {
-      //TODO iterate through the list and move each bullet
-        //for(Bullet b : buletList){
-        //    bullet.goUp();
-        //}
-
-        bulletList.getHead().getNext().goUp();
-        bulletList.getLastUsed().goUp();
-        bulletList.getLastUsed().getNext().goUp();
+        for(Bullet bullet : bullets) {
+            bullet.goUp();
+        }
     }
 
 
@@ -72,7 +69,7 @@ public class Game {
             }
 
             // move bullets
-            if(bulletList.getLength() > 0) {
+            if(bullets.size() > 0) {
                 moveBullets();
 
             }
