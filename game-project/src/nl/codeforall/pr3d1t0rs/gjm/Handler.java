@@ -59,7 +59,7 @@ public class Handler implements KeyboardHandler {
                 player.setDirection(Direction.LEFT);
                 break;
             case KeyboardEvent.KEY_SPACE:
-                bullets.add(new Bullet(player.getSpaceship().getX(), player.getSpaceship().getY(), 3, 5));
+                bullets.add(new Bullet(player.getSpaceship().getX()+25, player.getSpaceship().getY(), 3, 5));
                 break;
         }
     }
