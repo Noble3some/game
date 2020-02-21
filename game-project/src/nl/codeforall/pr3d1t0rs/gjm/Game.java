@@ -65,7 +65,9 @@ public class Game {
 
             // move enemies
             for (Enemy enemy : enemies) {
-                  enemy.move();
+                if (!enemy.isDead()) {
+                    enemy.move();
+                }
             }
 
             // move bullets
@@ -75,7 +77,7 @@ public class Game {
 
 
             // check collisions
-
+                //if enemies are dead then they suffer and delete()
             // sleep
             try {
                 Thread.sleep(20);

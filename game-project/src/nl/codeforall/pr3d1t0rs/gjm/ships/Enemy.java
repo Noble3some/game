@@ -9,6 +9,7 @@ public class Enemy {
 
     private Picture enemyship;
     private EnemyType type;
+    protected boolean dead;
 
 
     public Enemy() {
@@ -22,9 +23,11 @@ public class Enemy {
                 break;
             case TWO:
                 enemyship = new Picture(locationX, locationY, "enemies2.png");
+                this.type = EnemyType.TWO;
                 break;
             case THREE:
                 enemyship = new Picture(locationX, locationY, "enemies3.png");
+                this.type = EnemyType.THREE;
                 break;
             default:
                 enemyship = new Picture(locationX, 0, "enemies.png");
@@ -34,14 +37,28 @@ public class Enemy {
 
     }
 
+    public boolean isDead() {
+        return dead;
+    }
+
+    public void suffer() {
+        dead = true;
+        enemyship.delete();
+    }
+
     public Picture getEnemyship() {
         return enemyship;
     }
 
     public void move() {
        if (enemyship.getY() <= 700) {
-            enemyship.translate(0, 5);
-        }
+           switch (type) {
+               case TWO: enemyship.translate(0, 3);
+               default: enemyship.translate(0, 2);
+           }
+        } else {
+           suffer();
+       }
 
 
     }
