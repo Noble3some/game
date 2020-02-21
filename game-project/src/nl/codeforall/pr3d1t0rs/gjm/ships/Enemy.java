@@ -33,6 +33,9 @@ public class Enemy {
 
     }
 
+    public Picture getEnemyship() {
+        return enemyship;
+    }
 
     public void move() {
        if (enemyship.getY() <= 700) {

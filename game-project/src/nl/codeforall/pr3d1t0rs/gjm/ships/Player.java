@@ -36,6 +36,9 @@ public class Player {
 
     }
 
+    public Picture getSpaceship() {
+        return spaceship;
+    }
 
     public void move() {
         if (direction == null) {
