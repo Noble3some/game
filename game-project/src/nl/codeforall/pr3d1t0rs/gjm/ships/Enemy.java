@@ -8,7 +8,7 @@ public class Enemy {
     //private Ellipse ellipse;
 
     private Picture enemyship;
-    private int size;
+    private EnemyType type;
 
 
     public Enemy() {
@@ -18,6 +18,7 @@ public class Enemy {
         switch (type) {
             case ONE:
                 enemyship = new Picture(locationX, locationY, "enemies.png");
+                this.type = EnemyType.ONE;
                 break;
             case TWO:
                 enemyship = new Picture(locationX, locationY, "enemies2.png");

@@ -71,7 +71,6 @@ public class Game {
             // move bullets
             if(bullets.size() > 0) {
                 moveBullets();
-
             }
 
 
