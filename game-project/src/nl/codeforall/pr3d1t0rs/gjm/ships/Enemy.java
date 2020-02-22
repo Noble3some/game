@@ -1,6 +1,7 @@
 package nl.codeforall.pr3d1t0rs.gjm.ships;
 
 
+import nl.codeforall.pr3d1t0rs.gjm.Game;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Enemy {
@@ -89,17 +90,26 @@ public class Enemy {
     }
 
     public void move() {
-       if (enemyship.getY() <= 701) {
-           switch (type) {
-               case TWO: enemyship.translate(0, 3);
-               default: enemyship.translate(0, 2);
-           }
-        } else {
-           suffer();
-       }
-
-
+    if (enemyship.getY() <= Game.FIELD_WIDTH) {
+        switch (type) {
+            case TWO:
+                enemyship.translate(0, 3);
+            default:
+                int random = (int)(Math.random()*100);
+                if(random > 85 && enemyship.getMaxX() < Game.FIELD_WIDTH) {
+                    enemyship.translate(5, 0);
+                } else if(random < 85 && random > 70 && enemyship.getX() > 10) {
+                    enemyship.translate(-5, 0);
+                } else {
+                    enemyship.translate(0, 2);
+                }
+        }
+    }
+    else {
+        suffer();
     }
 }
+}
+
 
 

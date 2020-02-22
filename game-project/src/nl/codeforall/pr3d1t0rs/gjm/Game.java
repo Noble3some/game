@@ -9,8 +9,9 @@ import java.util.LinkedList;
 
 public class Game {
 
-    static int fieldWidth;
-
+    public static final int PADDING = 10;
+    public static final int FIELD_WIDTH = 720 - PADDING;
+    private Picture startScreen;
     private Picture playingField;
     private Enemy[] enemies;
     private Player player;
@@ -20,6 +21,11 @@ public class Game {
 
     public Game() {
 
+    }
+
+    public void drawStartScreen() {
+        startScreen = new Picture(10,10, "prepare.png");
+        startScreen.draw();
     }
 
     public void drawPlayingField() {
@@ -35,6 +41,12 @@ public class Game {
         Handler handler = new Handler(player, bullets);
         handler.init();
         collisionDetector = new CollisionDetector();
+        drawStartScreen();
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         moveEverything();
     }
 
@@ -48,8 +60,11 @@ public class Game {
     }
 
     public void moveEverything() {
+        //delete startscreen
+        startScreen.delete();
 
         while (true) {
+
             // move player
             player.move();
 
@@ -84,7 +99,8 @@ public class Game {
             collisionDetector.collide(player, enemies, bullets);
 
             if(player.isDead()) {
-                //draw a picture that says "YOU DIED. YOU SUCK."
+                Picture gameover = new Picture( 10, 10, "gameover.png");
+                gameover.draw();
                 return;
             }
             // sleep

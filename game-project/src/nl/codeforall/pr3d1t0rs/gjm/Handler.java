@@ -9,7 +9,7 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 import java.util.LinkedList;
 
 public class Handler implements KeyboardHandler {
-
+    //added game property
     private Player player;
     private LinkedList<Bullet> bullets;
 

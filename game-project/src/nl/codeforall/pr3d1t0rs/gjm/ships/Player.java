@@ -2,6 +2,7 @@ package nl.codeforall.pr3d1t0rs.gjm.ships;
 
 
 import nl.codeforall.pr3d1t0rs.gjm.Direction;
+import nl.codeforall.pr3d1t0rs.gjm.Game;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
@@ -78,10 +79,10 @@ public class Player {
     }
 
     private void moveRight() {
-        if(spaceship.getX() > 670) {
+        if(spaceship.getMaxX() > Game.FIELD_WIDTH) {
             return;
         }
-        spaceship.translate(5, 0);
+        spaceship.translate(10, 0);
     }
 
     private void moveLeft() {
