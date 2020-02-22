@@ -21,12 +21,12 @@ public class CollisionDetector {
             int enemyLeft = enemy.getX() + 10;
 
             for(Bullet bullet : bullets) {
-                int bulletbulletY = bullet.getY();
+                int bulletY = bullet.getY();
                 int bulletX = bullet.getX();
                 if(bullet.isKaboomed()) {
                     bullets.remove(this);
                 }
-                if(bulletbulletY <= enemyBottom && bulletX <= enemyRight && playerRight >= enemyLeft && bulletbulletY >= enemyTop && !enemy.isDead() && !bullet.isKaboomed()) {
+                if(bulletY <= enemyBottom && bulletX <= enemyRight && bulletX >= enemyLeft && bulletY >= enemyTop && !enemy.isDead() && !bullet.isKaboomed()) {
                     bullet.kaboom();
                     enemy.suffer();
                 }

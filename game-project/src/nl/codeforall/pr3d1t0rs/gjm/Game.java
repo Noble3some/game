@@ -29,7 +29,6 @@ public class Game {
 
     }
 
-
     public void drawPlayingField() {
         playingField = new Picture(10,10, "background.jpg");
         playingField.draw();
@@ -56,8 +55,6 @@ public class Game {
         }
     }
 
-
-
     public void moveEverything() {
 
         while (true) {
@@ -81,17 +78,13 @@ public class Game {
             // check collisions
             collisionDetector.collide(player, enemies, bullets);
 
-                //if enemies are dead then they suffer and delete()
-
             if(player.isDead()) {
                 //draw a picture that says "YOU DIED. YOU SUCK."
                 return;
             }
             // sleep
-
-
             try {
-                Thread.sleep(20);
+                Thread.sleep(50);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
