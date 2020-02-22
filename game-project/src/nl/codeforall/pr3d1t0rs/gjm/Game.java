@@ -57,6 +57,8 @@ public class Game {
             for (Enemy enemy : enemies) {
                 if (!enemy.isDead()) {
                     enemy.move();
+                } else if (enemy.isDead()) {
+                    enemy.sufferStage();
                 }
 
             }

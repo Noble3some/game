@@ -6,8 +6,13 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 public class Enemy {
 
     private Picture enemyship;
+    private Picture explosion;
     private EnemyType type;
     protected boolean dead;
+    private int sufferStage = 15; //decides how long explosions should be drawn
+    private int x;
+    private int y;
+
 
     public Enemy() {
         EnemyType type = EnemyType.selectEnemyType();
@@ -56,9 +61,29 @@ public class Enemy {
 
     public void suffer() {
         dead = true;
+        x = getX();
+        y = getY();
         enemyship.delete();
+        explosion = new Picture(x, y, "explosion2.png");
+        explosion.draw();
     }
 
+    public void sufferStage() {
+        sufferStage--;
+        if (sufferStage <= 0) {
+            explosion.delete();
+            return;
+        }
+        if (sufferStage <= 10) {
+            explosion.delete();
+            explosion = new Picture(x, y, "explosion3.png");
+            explosion.draw();
+            sufferStage--;
+            return;
+
+        }
+
+    }
     public Picture getEnemyship() {
         return enemyship;
     }
