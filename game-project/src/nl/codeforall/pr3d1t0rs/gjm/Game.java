@@ -16,7 +16,6 @@ import java.util.LinkedList;
 public class Game {
 
     static int fieldWidth;
-    //private Rectangle playingField; becoming a picture
 
     private Picture playingField;
     private boolean gameOver;
