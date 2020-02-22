@@ -15,7 +15,7 @@ public class MusicPlayer {
 
 
         // obtain an audio input stream from the provided file
-        AudioInputStream stream = AudioSystem.getAudioInputStream(new File("game-project/resources/music.au"));
+        AudioInputStream stream = AudioSystem.getAudioInputStream(new File("/resources/music.au"));
 
         // obtain the audio format of the sound data in this audio input stream
         AudioFormat format = stream.getFormat();
