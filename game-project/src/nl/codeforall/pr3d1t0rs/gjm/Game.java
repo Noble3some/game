@@ -77,8 +77,9 @@ public class Game {
 
             }
 
-
             // check collisions
+
+
 
             // sleep
             try {
