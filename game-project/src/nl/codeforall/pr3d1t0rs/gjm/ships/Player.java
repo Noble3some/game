@@ -16,15 +16,15 @@ public class Player {
     private Picture spaceship;
     private int playingFieldSize = 720;
     private int padding = 10;
+
     private boolean dead;
-    // get too load the spaceship
+
 
     public Player() {
         //load the ship but do not show it yet
         spaceship = new Picture(0, 620, "spaceship.png");
         //decide where the ship should first be shown
         int spawnpoint = (playingFieldSize / 2) - (spaceship.getWidth() /2) + padding;
-       // System.out.println("spawnpoint is: " +spawnpoint);
         //go there
         int currentLocation = spaceship.getX();
             for (int i =currentLocation; i< spawnpoint; i++) {
@@ -33,7 +33,6 @@ public class Player {
 
         //make the ship appear for the first time
         spaceship.draw();
-        //bullet = new Bullet(spaceship.getX(),spaceship.getY(),10, 10);
 
     }
 
@@ -91,10 +90,6 @@ public class Player {
         }
         spaceship.translate(-5, 0);
     }
-
-
-
-
 
     public void setDirection(Direction direction) {
         this.direction = direction;

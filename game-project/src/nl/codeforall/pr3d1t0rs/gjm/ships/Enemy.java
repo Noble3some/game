@@ -5,8 +5,6 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Enemy {
 
-    //private Ellipse ellipse;
-
     private Picture enemyship;
     private EnemyType type;
     protected boolean dead;
