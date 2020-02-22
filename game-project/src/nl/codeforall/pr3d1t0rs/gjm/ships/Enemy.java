@@ -11,7 +11,6 @@ public class Enemy {
     private EnemyType type;
     protected boolean dead;
 
-
     public Enemy() {
         EnemyType type = EnemyType.selectEnemyType();
         int locationX = (int) (Math.random() * (20 - 680) + 680);
@@ -41,6 +40,22 @@ public class Enemy {
         return dead;
     }
 
+    public int getX() {
+        return enemyship.getX();
+    }
+
+    public int getMaxX() {
+        return enemyship.getMaxX();
+    }
+
+    public int getY() {
+        return enemyship.getY();
+    }
+
+    public int getMaxY() {
+        return enemyship.getMaxY();
+    }
+
     public void suffer() {
         dead = true;
         enemyship.delete();
@@ -51,7 +66,7 @@ public class Enemy {
     }
 
     public void move() {
-       if (enemyship.getY() <= 700) {
+       if (enemyship.getY() <= 701) {
            switch (type) {
                case TWO: enemyship.translate(0, 3);
                default: enemyship.translate(0, 2);

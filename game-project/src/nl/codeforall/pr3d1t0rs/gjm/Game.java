@@ -19,10 +19,10 @@ public class Game {
     //private Rectangle playingField; becoming a picture
 
     private Picture playingField;
-    private boolean gameOver;
     private Enemy[] enemies;
     private Player player;
     private LinkedList<Bullet> bullets;
+    private CollisionDetector collisionDetector;
 
 
     public Game() {
@@ -43,11 +43,15 @@ public class Game {
         bullets = new LinkedList<Bullet>();
         Handler handler = new Handler(player, bullets);
         handler.init();
+        collisionDetector = new CollisionDetector();
         moveEverything();
     }
 
     public void moveBullets() {
         for(Bullet bullet : bullets) {
+            if(bullet.isKaboomed()) {
+                continue;
+            }
             bullet.goUp();
         }
     }
@@ -65,6 +69,7 @@ public class Game {
                 if (!enemy.isDead()) {
                     enemy.move();
                 }
+
             }
 
             // delete bullet from linked list if it has gotten boolean state "has gone off screen"
@@ -74,10 +79,16 @@ public class Game {
             }
 
             // check collisions
+            collisionDetector.collide(player, enemies, bullets);
 
                 //if enemies are dead then they suffer and delete()
 
+            if(player.isDead()) {
+                //draw a picture that says "YOU DIED. YOU SUCK."
+                return;
+            }
             // sleep
+
 
             try {
                 Thread.sleep(20);

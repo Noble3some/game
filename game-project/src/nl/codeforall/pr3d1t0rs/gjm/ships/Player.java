@@ -16,6 +16,7 @@ public class Player {
     private Picture spaceship;
     private int playingFieldSize = 720;
     private int padding = 10;
+    private boolean dead;
     // get too load the spaceship
 
     public Player() {
@@ -38,6 +39,31 @@ public class Player {
 
     public Picture getSpaceship() {
         return spaceship;
+    }
+
+    public int getY() {
+        return spaceship.getY();
+    }
+
+    public int getMaxY() {
+        return spaceship.getMaxY();
+    }
+
+    public int getX() {
+        return spaceship.getX();
+    }
+
+    public int getMaxX() {
+        return spaceship.getMaxX();
+    }
+
+    public boolean isDead() {
+        return dead;
+    }
+
+    public void suffer() {
+        dead = true;
+        spaceship.delete();
     }
 
     public void move() {

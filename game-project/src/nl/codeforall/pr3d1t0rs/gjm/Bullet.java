@@ -5,11 +5,29 @@ import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
 public class Bullet {
 
-    private boolean spacePushed;
+    private boolean kaboomed;
+
     private Rectangle rectangle;
 
     public Bullet(int startingX, int startingY, int bulletWidth, int bulletHeight) {
         rectangle = new Rectangle(startingX, startingY, bulletWidth, bulletHeight);
+    }
+
+    public int getY() {
+        return rectangle.getY();
+    }
+
+    public int getX() {
+        return rectangle.getX();
+    }
+
+    public boolean isKaboomed() {
+        return kaboomed;
+    }
+
+    public void kaboom() {
+        kaboomed = true;
+        rectangle.delete();
     }
 
     public void goUp() {
