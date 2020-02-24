@@ -17,6 +17,7 @@ public class Player {
     private Picture spaceship;
     private int playingFieldSize = 720;
     private int padding = 10;
+    private boolean shooting = false;
 
     private boolean dead;
 
@@ -94,5 +95,17 @@ public class Player {
 
     public void setDirection(Direction direction) {
         this.direction = direction;
+    }
+
+    public void shoot() {
+        shooting = true;
+    }
+
+    public boolean isShooting() {
+        return shooting;
+    }
+
+    public void resetShooting() {
+        shooting = false;
     }
 }

@@ -11,11 +11,9 @@ import java.util.LinkedList;
 public class Handler implements KeyboardHandler {
     //added game property
     private Player player;
-    private LinkedList<Bullet> bullets;
 
-    public Handler(Player player, LinkedList bullets) {
+    public Handler(Player player) {
         this.player = player;
-        this.bullets = bullets;
     }
 
     public void init() {
@@ -49,7 +47,6 @@ public class Handler implements KeyboardHandler {
     }
 
     @Override
-
     public void keyPressed(KeyboardEvent keyboardEvent) {
         switch(keyboardEvent.getKey()) {
             case KeyboardEvent.KEY_RIGHT:
@@ -59,7 +56,7 @@ public class Handler implements KeyboardHandler {
                 player.setDirection(Direction.LEFT);
                 break;
             case KeyboardEvent.KEY_SPACE:
-                bullets.add(new Bullet(player.getSpaceship().getX()+25, player.getSpaceship().getY(), 3, 5));
+                player.shoot();
                 break;
         }
     }

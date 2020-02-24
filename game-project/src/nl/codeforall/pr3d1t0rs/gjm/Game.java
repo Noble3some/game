@@ -38,15 +38,16 @@ public class Game {
         enemies = EnemyFactory.generateEnemies();
         player = new Player();
         bullets = new LinkedList<Bullet>();
-        Handler handler = new Handler(player, bullets);
+        Handler handler = new Handler(player);
         handler.init();
         collisionDetector = new CollisionDetector();
         drawStartScreen();
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+
+        while (!player.isShooting()) {
+            Thread.sleep(10);
         }
+
+        player.resetShooting();
         moveEverything();
     }
 
@@ -64,6 +65,11 @@ public class Game {
         startScreen.delete();
 
         while (true) {
+
+            if (player.isShooting()) {
+                bullets.add(new Bullet(player.getSpaceship().getX()+25, player.getSpaceship().getY(), 3, 5));
+                player.resetShooting();
+            }
 
             // move player
             player.move();
