@@ -85,6 +85,12 @@ public class Enemy {
         }
 
     }
+
+    public void deleteExplosions() {
+        explosion.delete();
+        System.out.println("Deleting explosions.");
+    }
+
     public Picture getEnemyship() {
         return enemyship;
     }

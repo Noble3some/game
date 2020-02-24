@@ -24,7 +24,7 @@ public class Game {
     }
 
     public void drawStartScreen() {
-        startScreen = new Picture(10,10, "prepare.png");
+        startScreen = new Picture(10,10, "startscreen.png");
         startScreen.draw();
     }
 
@@ -83,19 +83,21 @@ public class Game {
                 }
 
             }
-            //chekc if all enemies are dead and spwan new ones
+            //check if all enemies are dead and spawn new ones
             int enemyCounter = enemies.length;
             for (Enemy enemy : enemies) {
                 if (enemy.isDead()) {
                     enemyCounter--;
                 }
-                if (enemyCounter ==0) {
+                if (enemyCounter == 0) {
+                    for (Enemy enemy1 : enemies) {
+                        enemy1.deleteExplosions();
+                    }
                     enemies = EnemyFactory.generateEnemies();
 
                 }
             }
 
-            // delete bullet from linked list if it has gotten boolean state "has gone off screen"
             // move bullets
             if(bullets.size() > 0) {
                 moveBullets();
