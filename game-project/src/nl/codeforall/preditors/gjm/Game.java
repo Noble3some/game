@@ -1,8 +1,9 @@
-package nl.codeforall.pr3d1t0rs.gjm;
+package nl.codeforall.preditors.gjm;
 
-import nl.codeforall.pr3d1t0rs.gjm.ships.Enemy;
-import nl.codeforall.pr3d1t0rs.gjm.ships.EnemyFactory;
-import nl.codeforall.pr3d1t0rs.gjm.ships.Player;
+import nl.codeforall.preditors.gjm.ships.Enemy;
+import nl.codeforall.preditors.gjm.ships.EnemyFactory;
+import nl.codeforall.preditors.gjm.ships.MusicPlayer;
+import nl.codeforall.preditors.gjm.ships.Player;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 import java.util.LinkedList;
@@ -42,6 +43,17 @@ public class Game {
         handler.init();
         collisionDetector = new CollisionDetector();
         drawStartScreen();
+        Thread thread = new Thread(){
+            public void run(){
+                MusicPlayer AudioPlayer = new MusicPlayer();
+                try {
+                    AudioPlayer.start();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        thread.start();
 
         while (!player.isShooting()) {
             Thread.sleep(10);

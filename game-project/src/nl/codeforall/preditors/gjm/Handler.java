@@ -1,12 +1,10 @@
-package nl.codeforall.pr3d1t0rs.gjm;
+package nl.codeforall.preditors.gjm;
 
-import nl.codeforall.pr3d1t0rs.gjm.ships.Player;
+import nl.codeforall.preditors.gjm.ships.Player;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
-
-import java.util.LinkedList;
 
 public class Handler implements KeyboardHandler {
 

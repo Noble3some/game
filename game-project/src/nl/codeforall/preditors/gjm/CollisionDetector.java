@@ -1,7 +1,7 @@
-package nl.codeforall.pr3d1t0rs.gjm;
+package nl.codeforall.preditors.gjm;
 
-import nl.codeforall.pr3d1t0rs.gjm.ships.Enemy;
-import nl.codeforall.pr3d1t0rs.gjm.ships.Player;
+import nl.codeforall.preditors.gjm.ships.Enemy;
+import nl.codeforall.preditors.gjm.ships.Player;
 
 import java.util.LinkedList;
 

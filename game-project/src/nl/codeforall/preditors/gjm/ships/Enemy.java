@@ -1,7 +1,7 @@
-package nl.codeforall.pr3d1t0rs.gjm.ships;
+package nl.codeforall.preditors.gjm.ships;
 
 
-import nl.codeforall.pr3d1t0rs.gjm.Game;
+import nl.codeforall.preditors.gjm.Game;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Enemy {
